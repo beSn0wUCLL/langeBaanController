@@ -19,63 +19,48 @@ buttonStop.addEventListener('click', () => {
     fetch('/stop', {method: 'POST'});
 });
 
-// //HOLD TO RUN BACKWARDS
-// buttonHoldBackward.addEventListener("mousedown", () => {
-//     motorBackward();
-// });
+//HOLD TO RUN BACKWARDS
+buttonHoldBackward.addEventListener("mousedown", () => {
+    fetch('/backward', {method: 'POST'});
+});
 
-// buttonHoldBackward.addEventListener("mouseup", () => {
-//     motorStop();
-// });
+buttonHoldBackward.addEventListener("mouseup", () => {
+    fetch('/stop', {method: 'POST'});
+});
 
-// buttonHoldBackward.addEventListener("touchstart", () => {
-//     motorBackward();
-// });
+buttonHoldBackward.addEventListener("touchstart", () => {
+    fetch('/backward', {method: 'POST'});
+});
 
-// buttonHoldBackward.addEventListener("touchend", () => {
-//     motorStop();
-// });
+buttonHoldBackward.addEventListener("touchend", () => {
+    fetch('/stop', {method: 'POST'});
+});
 
-// //Prevents context menu from popping up
-// buttonHoldBackward.addEventListener("contextmenu", event => {
-//     event.preventDefault();
-// });
-// //HOLD TO RUN BACKWARDS END
-
-
-// //HOLD TO RUN FORWARDS
-// buttonHoldForward.addEventListener("mousedown", () => {
-//     motorForward();
-// });
-
-// buttonHoldForward.addEventListener("mouseup", () => {
-//     motorStop();
-// });
-
-// buttonHoldForward.addEventListener("touchstart", () => {
-//     motorForward();
-// });
-
-// buttonHoldForward.addEventListener("touchend", () => {
-//     motorStop();
-// });
-
-// buttonHoldForward.addEventListener("contextmenu", event => {
-//     event.preventDefault();
-// });
-// //HOLD TO RUN FORWARDS END
+//Prevents context menu from popping up
+buttonHoldBackward.addEventListener("contextmenu", event => {
+    event.preventDefault();
+});
+//HOLD TO RUN BACKWARDS END
 
 
-// const motorBackward = () => {
-//     motorStop();
-//     console.log("Motor Backward");
-// };
+//HOLD TO RUN FORWARDS
+buttonHoldForward.addEventListener("mousedown", () => {
+    fetch('/forward', {method: 'POST'});
+});
 
-// const motorForward = () => {
-//     motorStop();
-//     console.log("Motor Forward");
-// };
+buttonHoldForward.addEventListener("mouseup", () => {
+    fetch('/stop', {method: 'POST'});
+});
 
-// const motorStop = () => {
-//     console.log("Motor Stop");
-// };
+buttonHoldForward.addEventListener("touchstart", () => {
+    fetch('/forward', {method: 'POST'});
+});
+
+buttonHoldForward.addEventListener("touchend", () => {
+    fetch('/stop', {method: 'POST'});
+});
+
+buttonHoldForward.addEventListener("contextmenu", event => {
+    event.preventDefault();
+});
+//HOLD TO RUN FORWARDS END
