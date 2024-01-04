@@ -2,9 +2,12 @@ const express = require('express');
 const gpio = require('array-gpio');
 const app = express();
 const PORT = 3000;
+const timeoutDelay = 200;
 
 let relaisBackward = gpio.out(11);
 let relaisForward = gpio.out(12);
+let relaisStop = gpio.out(13);
+let relaisReserve = gpio.out(15);
 
 app.use(express.static('public'));
 
@@ -16,40 +19,48 @@ app.listen(PORT);
 console.log('Started Server at http://localhost:' + PORT);
 
 app.post('/backward', (req, res) => {
-    // console.log('Clicked Backward');
-
     motorBackward();
-
     res.sendStatus(200);
 });
 
 app.post('/forward', (req, res) => {
-    // console.log('Clicked Forward')
-
     motorForward();
-
     res.sendStatus(200);
 });
 
 app.post('/stop', (req, res) => {
-    // console.log('Clicked Stop')
-
     motorStop();
-
     res.sendStatus(200);
 });
 
 const motorBackward = () => {
     motorStop();
-    relaisBackward.on();
+
+    setTimeout(() => {
+        relaisBackward.on();
+    }, 100);
+
+    setTimeout(() => {
+        relaisBackward.off();
+    }, 200);
 };
 
 const motorForward = () => {
     motorStop();
-    relaisForward.on();
+
+    setTimeout(() => {
+        relaisForward.on();
+    }, 100);
+
+    setTimeout(() => {
+        relaisForward.off();
+    }, 200);
 };
 
 const motorStop = () => {
-    relaisBackward.off();
-    relaisForward.off();
+    relaisStop.on();
+
+    setTimeout(() => {
+        relaisStop.off();
+    }, 100);
 };
