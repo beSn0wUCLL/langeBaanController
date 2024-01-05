@@ -40,6 +40,10 @@ buttonHoldBackward.addEventListener("touchend", () => {
 buttonHoldBackward.addEventListener("contextmenu", event => {
     event.preventDefault();
 });
+
+buttonHoldBackward.addEventListener("selectstart", event => {
+    event.preventDefault();
+});
 //HOLD TO RUN BACKWARDS END
 
 
@@ -61,6 +65,10 @@ buttonHoldForward.addEventListener("touchend", () => {
 });
 
 buttonHoldForward.addEventListener("contextmenu", event => {
+    event.preventDefault();
+});
+
+buttonHoldForward.addEventListener("selectstart", event => {
     event.preventDefault();
 });
 //HOLD TO RUN FORWARDS END
